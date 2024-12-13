@@ -20,7 +20,7 @@
     "outDir": "lib",
     "plugins": [{ "transform": "@zerollup/ts-transform-paths" }]
   },
-  "include": ["./**/*.ts", "test"],
+  "include": ["./**/*.ts", "test", "src/ChatServerlts"],
   "exclude": [
     "node_modules/**/*",
     ".serverless/**/*",

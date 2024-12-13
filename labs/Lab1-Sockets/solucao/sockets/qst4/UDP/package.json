@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:server": "npx tsx watch ./src/UDPServer.ts",
-    "start:client": "npx tsx watch ./src/UDPClient.ts"
+    "start:server": "npx tsx watch ./src/ChatServer.ts",
+    "start:client": "npx tsx ./src/ChatClient.ts"
   },
   "dependencies": {
     "tsx": "^4.19.2"
