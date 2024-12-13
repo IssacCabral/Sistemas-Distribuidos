@@ -1,0 +1,1 @@
+http://localhost:8080/AulaWS2021.1Client/sampleCalculadoraProxy/TestClient.jsp?endpoint=http://localhost:10053/AulaWS2021.1/services/Calculadora
