@@ -3,21 +3,48 @@ services:
     build:
       context: .
       dockerfile: ./src/server/Dockerfile
-    container_name: tcp_server
+    container_name: tcp_server_dos
     networks:
       chat_net:
         ipv4_address: 192.168.1.10
     ports:
       - "7896:7896"
+    deploy:
+      resources:
+        limits:
+          memory: 75M # Limite de memória
+          cpus: "0.5" # Meio núcleo de CPU
 
   client:
     build:
       context: .
       dockerfile: ./src/client/Dockerfile
-    container_name: tcp_client
+    container_name: tcp_client_dos
     networks:
       chat_net:
         ipv4_address: 192.168.1.11
+    environment:
+      SERVER_HOST: 192.168.1.10
+
+  client2:
+    build:
+      context: .
+      dockerfile: ./src/client/Dockerfile
+    container_name: tcp_client2_dos
+    networks:
+      chat_net:
+        ipv4_address: 192.168.1.12
+    environment:
+      SERVER_HOST: 192.168.1.10
+
+  client3:
+    build:
+      context: .
+      dockerfile: ./src/client/Dockerfile
+    container_name: tcp_client3_dos
+    networks:
+      chat_net:
+        ipv4_address: 192.168.1.13
     environment:
       SERVER_HOST: 192.168.1.10
 

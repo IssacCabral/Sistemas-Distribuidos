@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:client": "npx tsx watch ./TCPClient.ts"
+    "start:client": "npx tsx ./TCPClient.ts"
   },
   "dependencies": {
     "tsx": "^4.19.2"
