@@ -1,5 +1,7 @@
+import { Property } from "../entities/property";
+
 export interface DataReader {
-  readSystem(): void
-  readFile(): void
-  readTCP(): void
+  readSystem(): Promise<void>;
+  readFile(): void;
+  readTCP(): void;
 }

@@ -2,6 +2,7 @@ import { Property } from "../entities/property";
 import { DataWriter } from "../interfaces/dataWriter.interface";
 import sizeof from "object-sizeof";
 import fs from "node:fs";
+import net from "net";
 
 export class PropertyOutputStream implements DataWriter {
   constructor(
@@ -19,7 +20,19 @@ export class PropertyOutputStream implements DataWriter {
   }
 
   writeTCP(): void {
-    throw new Error("Method not implemented.");
+    const output = this.buildPropertyStream();
+    const client = net.createConnection(
+      { host: "localhost", port: 7896 },
+      () => {
+        console.log("Conectado ao servidor remoto.");
+        client.write(output);
+        client.end();
+      }
+    );
+
+    client.on("error", (err) => {
+      console.error("Erro na conexão TCP:", err);
+    });
   }
 
   private buildPropertyStream(): string {
