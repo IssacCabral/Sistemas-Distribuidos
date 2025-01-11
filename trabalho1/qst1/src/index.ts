@@ -1,24 +1,25 @@
-import { PersonOutputStream } from "./app/personOutputStream";
-import { Person } from "./entities/person";
+import { PropertyOutputStream } from "./app/propertyOutputStream";
+import { Property, PropertyType } from "./entities/property";
 
-const data: Person[] = [
+const data: Property[] = [
   {
-    age: 10,
-    cpf: "1",
-    name: "Maria",
+    title: "Casa das Rosas",
+    type: PropertyType.HOUSE,
+    price: 150000,
   },
   {
-    age: 12,
-    cpf: "2",
-    name: "José",
+    title: "Apartamento das Nuvens",
+    type: PropertyType.APARTMENT,
+    price: 225000,
   },
   {
-    age: 13,
-    cpf: "3",
-    name: "Pedro",
+    title: "Duplex da Paz",
+    type: PropertyType.DUPLEX,
+    price: 345000,
   },
 ];
 
-const personOutputStream = new PersonOutputStream(data);
+const personOutputStream = new PropertyOutputStream(data);
 
-personOutputStream.writeSystem();
+// personOutputStream.writeSystem();
+personOutputStream.writeFile();

@@ -11,6 +11,6 @@
     "strict": true,
     "noImplicitAny": true
   },
-  "include": ["src/**/*.ts", "src/entities/person.ts"],
+  "include": ["src/**/*.ts", "src/entities/property.ts"],
   "exclude": ["./dist/**/*", "node_modules"]
 }
