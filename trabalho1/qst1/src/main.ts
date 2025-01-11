@@ -19,7 +19,8 @@ const data: Property[] = [
   },
 ];
 
-const personOutputStream = new PropertyOutputStream(data);
+const outputStream = new PropertyOutputStream(data, process.stdout);
 
-// personOutputStream.writeSystem();
-personOutputStream.writeFile();
+// outputStream.writeSystem();
+outputStream.writeFile();
+// outputStream.writeTCP();

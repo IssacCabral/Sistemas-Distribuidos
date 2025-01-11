@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "npx tsx watch src/index.ts"
+    "dev": "npx tsx watch src/main.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
