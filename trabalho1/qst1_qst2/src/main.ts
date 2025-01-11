@@ -1,5 +1,5 @@
-import { PropertyInputStream } from "./app/propertyInputStream";
-import { PropertyOutputStream } from "./app/propertyOutputStream";
+import { PropertyInputStream } from "./streams/propertyInputStream";
+import { PropertyOutputStream } from "./streams/propertyOutputStream";
 import { Property } from "./entities/property";
 
 const data: Property[] = [];
