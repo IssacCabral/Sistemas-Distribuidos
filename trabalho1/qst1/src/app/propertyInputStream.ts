@@ -1,6 +1,8 @@
 import { Property, PropertyType } from "../entities/property";
 import { DataReader } from "../interfaces/dataReader.interface";
 import readline from "node:readline";
+import fs from "node:fs";
+import net from "node:net";
 
 export class PropertyInputStream implements DataReader {
   constructor(
@@ -39,18 +41,28 @@ export class PropertyInputStream implements DataReader {
 
       this.properties.push(property);
 
-      console.log("Propriedade adicionada com sucesso!");
+      console.log("Propriedade adicionada com sucesso!\n\n");
     } finally {
       rl.close();
     }
   }
 
   readFile(): void {
-    throw new Error("Method not implemented.");
+    const data = fs.readFileSync("output.txt", "utf8");
+    console.log(data);
   }
 
   readTCP(): void {
-    throw new Error("Method not implemented.");
+    const server = net.createServer((socket) => {
+      console.log("Conexão TCP recebida.");
+      socket.on("data", (data) =>
+        console.log("dado recebido\n" + data.toString())
+      );
+    });
+
+    server.listen(7896, () => {
+      console.log("servidor ouvindo na porta 7896");
+    });
   }
 
   private validateType(input: string): PropertyType {
