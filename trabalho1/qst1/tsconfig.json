@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "CommonJS",
+    "skipLibCheck": true,
+    "outDir": "./dist",
+
+    "isolatedModules": true,
+    "esModuleInterop": true,
+
+    "strict": true,
+    "noImplicitAny": true
+  },
+  "include": ["src/**/*.ts", "src/entities/person.ts"],
+  "exclude": ["./dist/**/*", "node_modules"]
+}
