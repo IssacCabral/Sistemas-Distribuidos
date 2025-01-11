@@ -1,0 +1,18 @@
+{
+  "name": "voting-system",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "server": "npx tsx src/servers/tcpServer.ts",
+    "client": "npx tsx src/clients/tcpClient.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "object-sizeof": "^2.6.5"
+  }
+}
