@@ -1,0 +1,38 @@
+voting-system/
+│
+├── src/                          # Código fonte da aplicação
+│   ├── config/                   # Configurações gerais da aplicação
+│   │   ├── tcpConfig.ts          # Configurações do servidor TCP
+│   │   ├── udpConfig.ts          # Configurações do servidor UDP (multicast)
+│   │   └── appConfig.ts          # Configurações gerais do app
+│   │
+│   ├── models/                   # Modelos de dados (ex: candidatos, votos)
+│   │   ├── candidateModel.ts     # Estrutura de dados para candidatos
+│   │   └── voteModel.ts          # Estrutura de dados para votos
+│   │
+│   ├── services/                 # Lógica de negócio (votação, gestão de candidatos)
+│   │   ├── votingService.ts      # Lógica de votação e contagem de votos
+│   │   ├── candidateService.ts   # Lógica para adicionar/remover candidatos
+│   │   └── adminService.ts       # Lógica de administração (enviar notas)
+│   │
+│   ├── controllers/              # Controladores para a comunicação (TCP/UDP)
+│   │   ├── tcpController.ts      # Gerencia as requisições TCP (login, votos)
+│   │   └── udpController.ts      # Gerencia as requisições UDP (notas informativas)
+│   │
+│   ├── servers/                  # Implementação dos servidores TCP/UDP
+│   │   ├── tcpServer.ts          # Servidor TCP para login, candidatos e votos
+│   │   └── udpServer.ts          # Servidor UDP para notas informativas
+│   │
+│   ├── utils/                    # Utilitários (ex: funções auxiliares)
+│   │   └── jsonUtils.ts          # Funções auxiliares para manipulação de JSON
+│   │
+│   ├── clients/                  # Implementação dos clientes TCP/UDP
+│   │   ├── tcpClient.ts          # Cliente TCP (login, votos)
+│   │   └── udpClient.ts          # Cliente UDP (notas informativas)
+│   │
+│   └── index.ts                  # Ponto de entrada para iniciar a aplicação
+│
+├── .env                          # Arquivo de variáveis de ambiente
+├── package.json                  # Dependências e scripts
+├── tsconfig.json                 # Configuração do TypeScript
+└── README.md                     # Documentação do projeto

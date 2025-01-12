@@ -1,7 +1,7 @@
 import * as net from "node:net";
 import { TCP_HOST, TCP_PORT } from "../constants/tcpConfig";
 import { candidates } from "../constants/candidates";
-import { RequestType, Request } from "../shared/request";
+import { RequestType, Request } from "../shared/request.shared";
 
 const server = net.createServer((socket) => {
   console.log("Novo cliente conectado.");
