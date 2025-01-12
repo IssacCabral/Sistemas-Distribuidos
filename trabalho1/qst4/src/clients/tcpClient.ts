@@ -1,9 +1,7 @@
 import { question, rl } from "../shared/question.shared";
 import { askLogin } from "../functions/askLogin";
-import { listenForData } from "../functions/listenForData";
 import { authenticatedMenu } from "../functions/authenticatedMenu";
 import { connectClient } from "../functions/connectClient";
-import { Request, RequestType } from "../shared/request.shared";
 
 async function main() {
   try {

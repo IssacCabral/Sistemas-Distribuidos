@@ -21,10 +21,18 @@ const server = net.createServer((socket) => {
     const request: Request = JSON.parse(data.toString());
 
     switch (request.type) {
-      case RequestType.CANDIDATES_LIST: {
+      case RequestType.FETCH_CANDIDATES: {
         const response: Response = {
           type: ResponseType.CANDIDATES,
           content: candidates,
+        };
+        socket.write(JSON.stringify(response));
+        break;
+      }
+      case RequestType.FETCH_RESULT: {
+        const response: Response = {
+          type: ResponseType.RESULT,
+          content: votes,
         };
         socket.write(JSON.stringify(response));
         break;
@@ -33,8 +41,8 @@ const server = net.createServer((socket) => {
         addVote(request.content);
 
         const response: Response = {
-          type: ResponseType.VOTE_RESULT,
-          content: votes,
+          type: ResponseType.RESULT,
+          content: `Votou com sucesso no candidato: ${votes[request.content]}`,
         };
 
         socket.write(JSON.stringify(response));

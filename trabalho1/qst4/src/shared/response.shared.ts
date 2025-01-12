@@ -1,6 +1,6 @@
 export enum ResponseType {
   CANDIDATES = "candidates",
-  VOTE_RESULT = "vote_result",
+  RESULT = "result",
 }
 
 export interface Response {
