@@ -6,11 +6,11 @@ export const candidates: Candidate[] = [
     name: "Charizard",
   },
   {
-    id: 1,
+    id: 2,
     name: "Venosaur",
   },
   {
-    id: 1,
+    id: 3,
     name: "Blastoise",
   },
 ];

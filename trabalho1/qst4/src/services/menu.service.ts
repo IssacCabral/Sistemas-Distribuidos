@@ -27,7 +27,8 @@ export class MenuService extends BaseService {
       default:
         console.log("Opção inválida. Tente novamente.");
         this.showMenu();
-        break;
     }
   }
+
+  async showAuthenticatedMenu() {}
 }

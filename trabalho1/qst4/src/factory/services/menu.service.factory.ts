@@ -1,4 +1,4 @@
-import { MenuService } from "../services/menu.service";
+import { MenuService } from "../../services/menu.service";
 import * as net from "node:net";
 import { LoginServiceFactory } from "./login.service.factory";
 

@@ -1,25 +1,43 @@
-import * as net from "node:net";
-import { TCP_HOST, TCP_PORT } from "../constants/tcpConfig";
-import { rl } from "../shared/question.shared";
-import { OnConnectControllerFactory } from "../factory/onConnect.controller.factory";
+import { question, rl } from "../shared/question.shared";
+import { askLogin } from "../functions/askLogin";
+import { listenForData } from "../functions/listenForData";
+import { authenticatedMenu } from "../functions/authenticatedMenu";
+import { connectClient } from "../functions/connectClient";
+import { Request, RequestType } from "../shared/request.shared";
 
-const client = new net.Socket();
+async function main() {
+  try {
+    const client = await connectClient();
 
-const onConnectController = OnConnectControllerFactory(client);
+    let isAuthenticated = false;
+    while (!isAuthenticated) {
+      console.log("\nEscolha uma das opções:");
+      console.log("1 - Fazer login");
+      console.log("2 - Sair");
 
-client.connect(TCP_PORT, TCP_HOST, () => onConnectController.handle());
+      const choice = await question("Digite sua escolha: ");
 
-client.on("data", (data) => {
-  const response = JSON.parse(data.toString());
-  console.log(`Recebido do servidor: ${JSON.stringify(response, null, 2)}`);
-});
+      switch (choice) {
+        case "1": {
+          await askLogin();
+          isAuthenticated = true;
+          break;
+        }
+        case "2": {
+          console.log("Saindo...");
+          rl.close();
+          client.destroy();
+          return;
+        }
+        default:
+          console.log("Opção inválida. Tente novamente.");
+      }
+    }
 
-client.on("error", (err) => {
-  console.log("Erro:", err);
-  rl.close();
-  client.destroy();
-});
+    await authenticatedMenu(client);
+  } catch (err) {
+    console.error("Erro de conexão:", err);
+  }
+}
 
-client.on("close", () => {
-  console.log("Conexão encerrada.");
-});
+main();

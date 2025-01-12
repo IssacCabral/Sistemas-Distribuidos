@@ -1,5 +1,5 @@
-import { OnConnectController } from "../controllers/clients/onConnect.controller";
-import { MenuServiceFactory } from "./menu.service.factory";
+import { OnConnectController } from "../../controllers/clients/onConnect.controller";
+import { MenuServiceFactory } from "../services/menu.service.factory";
 import * as net from "node:net";
 
 export const OnConnectControllerFactory = (

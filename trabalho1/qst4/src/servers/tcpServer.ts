@@ -2,6 +2,17 @@ import * as net from "node:net";
 import { TCP_HOST, TCP_PORT } from "../constants/tcpConfig";
 import { candidates } from "../constants/candidates";
 import { RequestType, Request } from "../shared/request.shared";
+import { Response, ResponseType } from "../shared/response.shared";
+
+let votes: { [key: number]: number } = {};
+
+function addVote(candidateId: number) {
+  if (votes[candidateId]) {
+    votes[candidateId]++;
+  } else {
+    votes[candidateId] = 1;
+  }
+}
 
 const server = net.createServer((socket) => {
   console.log("Novo cliente conectado.");
@@ -10,12 +21,23 @@ const server = net.createServer((socket) => {
     const request: Request = JSON.parse(data.toString());
 
     switch (request.type) {
-      case RequestType.LOGIN: {
-        socket.write(JSON.stringify(candidates)); // Envia uma resposta ao cliente
+      case RequestType.CANDIDATES_LIST: {
+        const response: Response = {
+          type: ResponseType.CANDIDATES,
+          content: candidates,
+        };
+        socket.write(JSON.stringify(response));
         break;
       }
       case RequestType.VOTE: {
-        socket.write(JSON.stringify({ message: "Você votou no sistema" }));
+        addVote(request.content);
+
+        const response: Response = {
+          type: ResponseType.VOTE_RESULT,
+          content: votes,
+        };
+
+        socket.write(JSON.stringify(response));
         break;
       }
       default: {

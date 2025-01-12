@@ -1,5 +1,5 @@
 export enum RequestType {
-  LOGIN = "login",
+  CANDIDATES_LIST = "candidates_list",
   VOTE = "vote",
 }
 
