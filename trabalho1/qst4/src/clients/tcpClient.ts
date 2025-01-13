@@ -1,7 +1,7 @@
 import { question, rl } from "../shared/question.shared";
-import { askLogin } from "../functions/askLogin";
-import { authenticatedMenu } from "../functions/authenticatedMenu";
-import { connectClient } from "../functions/connectClient";
+import { askLogin } from "../functions/client/askLogin";
+import { authenticatedMenu } from "../functions/client/authenticatedMenu";
+import { connectClient } from "../functions/client/connectClient";
 
 async function main() {
   try {

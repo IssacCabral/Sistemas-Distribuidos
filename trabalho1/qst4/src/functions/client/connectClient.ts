@@ -1,5 +1,5 @@
 import * as net from "node:net";
-import { TCP_HOST, TCP_PORT } from "../constants/tcpConfig";
+import { TCP_HOST, TCP_PORT } from "../../constants/tcpConfig";
 
 export async function connectClient(): Promise<net.Socket> {
   return new Promise((resolve, reject) => {

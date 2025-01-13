@@ -1,4 +1,4 @@
-import { question } from "../shared/question.shared";
+import { question } from "../../shared/question.shared";
 
 export async function promptClearScreen(waitForUser: boolean = true) {
   if (waitForUser) {

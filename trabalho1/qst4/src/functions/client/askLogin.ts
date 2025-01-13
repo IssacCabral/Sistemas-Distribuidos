@@ -1,5 +1,5 @@
-import { adminPassword, clientPassword } from "../constants/passwords";
-import { question } from "../shared/question.shared";
+import { adminPassword, clientPassword } from "../../constants/passwords";
+import { question } from "../../shared/question.shared";
 
 export async function askLogin() {
   let validChoice = false;

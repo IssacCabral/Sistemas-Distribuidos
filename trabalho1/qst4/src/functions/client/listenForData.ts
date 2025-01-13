@@ -1,5 +1,5 @@
 import * as net from "node:net";
-import { Response, ResponseType } from "../shared/response.shared";
+import { Response, ResponseType } from "../../shared/response.shared";
 
 export async function listenForData(client: net.Socket) {
   return new Promise<void>((resolve, reject) => {

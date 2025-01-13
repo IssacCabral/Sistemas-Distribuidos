@@ -1,5 +1,5 @@
 import * as net from "node:net";
-import { Request, RequestType } from "../shared/request.shared";
+import { Request, RequestType } from "../../shared/request.shared";
 
 export async function fetchCandidates(client: net.Socket) {
   const request: Request = {

@@ -1,6 +1,6 @@
-import { candidates } from "../constants/candidates";
-import { question } from "../shared/question.shared";
-import { Request, RequestType } from "../shared/request.shared";
+import { candidates } from "../../constants/candidates";
+import { question } from "../../shared/question.shared";
+import { Request, RequestType } from "../../shared/request.shared";
 import * as net from "node:net";
 
 export async function askVote(client: net.Socket) {

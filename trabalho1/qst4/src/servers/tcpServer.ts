@@ -3,16 +3,8 @@ import { TCP_HOST, TCP_PORT } from "../constants/tcpConfig";
 import { candidates } from "../constants/candidates";
 import { RequestType, Request } from "../shared/request.shared";
 import { Response, ResponseType } from "../shared/response.shared";
-
-let votes: { [key: number]: number } = {};
-
-function addVote(candidateId: number) {
-  if (votes[candidateId]) {
-    votes[candidateId]++;
-  } else {
-    votes[candidateId] = 1;
-  }
-}
+import { calculateWinner } from "../functions/server/calculateWinner";
+import { addVote } from "../functions/server/addVote";
 
 const server = net.createServer((socket) => {
   console.log("Novo cliente conectado.");
@@ -32,17 +24,21 @@ const server = net.createServer((socket) => {
       case RequestType.FETCH_RESULT: {
         const response: Response = {
           type: ResponseType.RESULT,
-          content: votes,
+          content: calculateWinner(),
         };
+
         socket.write(JSON.stringify(response));
         break;
       }
       case RequestType.VOTE: {
         addVote(request.content);
 
+        const candidateVoted = candidates.find(
+          (candidate) => candidate.id === request.content
+        );
         const response: Response = {
           type: ResponseType.RESULT,
-          content: `Votou com sucesso no candidato: ${votes[request.content]}`,
+          content: `Votou com sucesso no candidato: ${candidateVoted?.name}`,
         };
 
         socket.write(JSON.stringify(response));

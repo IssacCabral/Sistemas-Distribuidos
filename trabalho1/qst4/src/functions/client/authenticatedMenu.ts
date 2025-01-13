@@ -1,5 +1,5 @@
 import * as net from "node:net";
-import { question, rl } from "../shared/question.shared";
+import { question, rl } from "../../shared/question.shared";
 import { askVote } from "./askVote";
 import { listenForData } from "./listenForData";
 import { fetchCandidates } from "./fetchCandidates";
