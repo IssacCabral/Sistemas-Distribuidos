@@ -1,10 +1,9 @@
 import * as net from "node:net";
 import { TCP_HOST, TCP_PORT } from "../constants/tcpConfig";
-import { candidates } from "../constants/candidates";
 import { RequestType, Request } from "../shared/request.shared";
-import { Response, ResponseType } from "../shared/response.shared";
-import { calculateWinner } from "../functions/server/calculateWinner";
-import { addVote } from "../functions/server/addVote";
+import { returnCandidates } from "../functions/server/returnCandidates";
+import { returnResult } from "../functions/server/returnResult";
+import { returnVoteResponse } from "../functions/server/returnVoteResponse";
 
 const server = net.createServer((socket) => {
   console.log("Novo cliente conectado.");
@@ -14,34 +13,15 @@ const server = net.createServer((socket) => {
 
     switch (request.type) {
       case RequestType.FETCH_CANDIDATES: {
-        const response: Response = {
-          type: ResponseType.CANDIDATES,
-          content: candidates,
-        };
-        socket.write(JSON.stringify(response));
+        returnCandidates(socket);
         break;
       }
       case RequestType.FETCH_RESULT: {
-        const response: Response = {
-          type: ResponseType.RESULT,
-          content: calculateWinner(),
-        };
-
-        socket.write(JSON.stringify(response));
+        returnResult(socket);
         break;
       }
       case RequestType.VOTE: {
-        addVote(request.content);
-
-        const candidateVoted = candidates.find(
-          (candidate) => candidate.id === request.content
-        );
-        const response: Response = {
-          type: ResponseType.RESULT,
-          content: `Votou com sucesso no candidato: ${candidateVoted?.name}`,
-        };
-
-        socket.write(JSON.stringify(response));
+        returnVoteResponse(socket, request);
         break;
       }
       default: {
