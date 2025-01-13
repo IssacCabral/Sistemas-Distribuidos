@@ -4,6 +4,7 @@ import { RequestType, Request } from "../../shared/request.shared";
 import { returnCandidates } from "../../functions/server/returnCandidates";
 import { returnResult } from "../../functions/server/returnResult";
 import { returnVoteResponse } from "../../functions/server/returnVoteResponse";
+import { returnInsertResponse } from "../../functions/server/returnInsertResponse";
 
 const server = net.createServer((socket) => {
   console.log("Novo cliente conectado.");
@@ -25,7 +26,7 @@ const server = net.createServer((socket) => {
         break;
       }
       case RequestType.INSERT: {
-        returnInsertResponse();
+        returnInsertResponse(request);
         break;
       }
       default: {
