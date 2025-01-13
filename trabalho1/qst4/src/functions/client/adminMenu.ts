@@ -1,30 +1,29 @@
 import * as net from "node:net";
-import { question, rl } from "../../shared/question.shared";
-import { askVote } from "./askVote";
-import { listenForData } from "./listenForData";
-import { fetchCandidates } from "./fetchCandidates";
-import { fetchResult } from "./fetchResult";
 import { promptClearScreen } from "./promptClear";
+import { question, rl } from "../../shared/question.shared";
+import { fetchCandidates } from "./fetchCandidates";
+import { listenForData } from "./listenForData";
+import { insertCandidate } from "./insertCandidate";
 
-export async function authenticatedMenu(client: net.Socket) {
+export async function adminMenu(client: net.Socket) {
   promptClearScreen(false);
 
   let continueInteraction = true;
 
   while (continueInteraction) {
-    console.log("\n=== Menu Principal ===");
-    console.log("1 - Votar");
+    console.log("\n=== Menu do Admin ===");
+    console.log("1 - Inserir Candidato");
     console.log("2 - Listar candidatos");
-    console.log("3 - Resultado da eleição");
-    console.log("4 - Sair");
+    console.log("3 - Remover Candidato");
+    console.log("4 - Enviar nota informativa");
+    console.log("5 - Sair");
 
     const choice = await question("Escolha uma opção: ");
 
     switch (choice) {
       case "1":
-        console.log("\n--- Votação ---");
-        await askVote(client);
-        await listenForData(client);
+        console.log("Inserir candidato");
+        await insertCandidate(client);
         await promptClearScreen();
         break;
       case "2":
@@ -33,11 +32,14 @@ export async function authenticatedMenu(client: net.Socket) {
         await promptClearScreen();
         break;
       case "3":
-        await fetchResult(client);
-        await listenForData(client);
+        console.log("Remover candidato");
         await promptClearScreen();
         break;
       case "4":
+        console.log("Enviar nota informativa...");
+        await promptClearScreen();
+        break;
+      case "5":
         console.log("Saindo do sistema...");
         continueInteraction = false;
         rl.close();

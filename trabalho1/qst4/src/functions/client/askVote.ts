@@ -1,4 +1,4 @@
-import { candidates } from "../../constants/candidates";
+import { candidates } from "../../servers/TCP/database";
 import { question } from "../../shared/question.shared";
 import { Request, RequestType } from "../../shared/request.shared";
 import * as net from "node:net";

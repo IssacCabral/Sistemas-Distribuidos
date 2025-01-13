@@ -1,9 +1,9 @@
 import * as net from "node:net";
 import { Response, ResponseType } from "../../shared/response.shared";
 import { addVote } from "./addVote";
-import { candidates } from "../../constants/candidates";
 import { Request } from "../../shared/request.shared";
 import { electionCloseDate } from "../../servers/TCP/electionCloseDate";
+import { candidates } from "../../servers/TCP/database";
 
 export function returnVoteResponse(socket: net.Socket, request: Request) {
   const now = new Date();

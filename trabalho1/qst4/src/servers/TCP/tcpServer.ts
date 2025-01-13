@@ -24,6 +24,10 @@ const server = net.createServer((socket) => {
         returnVoteResponse(socket, request);
         break;
       }
+      case RequestType.INSERT: {
+        returnInsertResponse();
+        break;
+      }
       default: {
         socket.write(
           JSON.stringify({

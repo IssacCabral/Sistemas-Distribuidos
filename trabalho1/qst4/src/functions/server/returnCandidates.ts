@@ -1,4 +1,4 @@
-import { candidates } from "../../constants/candidates";
+import { candidates } from "../../servers/TCP/database";
 import { Response, ResponseType } from "../../shared/response.shared";
 import * as net from "node:net";
 

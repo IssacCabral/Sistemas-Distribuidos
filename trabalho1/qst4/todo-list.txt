@@ -1,4 +1,4 @@
-- Adicionar temporizador
+- Adicionar temporizador - OK
 - admin do sistema
   - introduzir candidatos
   - remover candidatos

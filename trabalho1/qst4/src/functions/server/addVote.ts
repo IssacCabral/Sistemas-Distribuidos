@@ -1,4 +1,4 @@
-import { votes } from "../../servers/TCP/votes";
+import { votes } from "../../servers/TCP/database";
 
 export function addVote(candidateId: number) {
   if (votes.has(candidateId)) {

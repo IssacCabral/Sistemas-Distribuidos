@@ -1,5 +1,4 @@
-import { candidates } from "../../constants/candidates";
-import { votes } from "../../servers/TCP/votes";
+import { candidates, votes } from "../../servers/TCP/database";
 
 export function calculateWinner() {
   if (votes.size < 1) {
