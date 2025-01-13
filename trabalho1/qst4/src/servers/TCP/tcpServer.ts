@@ -1,9 +1,9 @@
 import * as net from "node:net";
-import { TCP_HOST, TCP_PORT } from "../constants/tcpConfig";
-import { RequestType, Request } from "../shared/request.shared";
-import { returnCandidates } from "../functions/server/returnCandidates";
-import { returnResult } from "../functions/server/returnResult";
-import { returnVoteResponse } from "../functions/server/returnVoteResponse";
+import { TCP_HOST, TCP_PORT } from "../../constants/tcpConfig";
+import { RequestType, Request } from "../../shared/request.shared";
+import { returnCandidates } from "../../functions/server/returnCandidates";
+import { returnResult } from "../../functions/server/returnResult";
+import { returnVoteResponse } from "../../functions/server/returnVoteResponse";
 
 const server = net.createServer((socket) => {
   console.log("Novo cliente conectado.");

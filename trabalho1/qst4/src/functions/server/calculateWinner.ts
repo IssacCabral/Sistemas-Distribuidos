@@ -1,5 +1,5 @@
 import { candidates } from "../../constants/candidates";
-import { votes } from "./votes";
+import { votes } from "../../servers/TCP/votes";
 
 export function calculateWinner() {
   let winnerCandidate: { candidateId: number; name: string; votes: number } = {

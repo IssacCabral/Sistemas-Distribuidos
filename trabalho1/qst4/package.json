@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "server": "npx tsx src/servers/tcpServer.ts",
+    "server": "npx tsx src/servers/TCP/tcpServer.ts",
     "client": "npx tsx src/clients/tcpClient.ts"
   },
   "devDependencies": {

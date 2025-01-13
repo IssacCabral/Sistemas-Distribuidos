@@ -21,8 +21,6 @@ export async function askVote(client: net.Socket) {
         content: Number(choice),
       };
       client.write(JSON.stringify(request));
-
-      console.log("Voto enviado com sucesso!");
     }
   }
 }

@@ -1,0 +1,5 @@
+- Adicionar temporizador
+- admin do sistema
+  - introduzir candidatos
+  - remover candidatos
+  - enviar notas informativas (Final)
