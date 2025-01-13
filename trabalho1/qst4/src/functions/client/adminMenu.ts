@@ -4,6 +4,7 @@ import { question, rl } from "../../shared/question.shared";
 import { fetchCandidates } from "./fetchCandidates";
 import { listenForData } from "./listenForData";
 import { insertCandidate } from "./insertCandidate";
+import { removeCandidate } from "./removeCandidate";
 
 export async function adminMenu(client: net.Socket) {
   promptClearScreen(false);
@@ -33,6 +34,7 @@ export async function adminMenu(client: net.Socket) {
         break;
       case "3":
         console.log("Remover candidato");
+        await removeCandidate(client);
         await promptClearScreen();
         break;
       case "4":

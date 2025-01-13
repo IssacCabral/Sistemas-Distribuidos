@@ -5,6 +5,7 @@ import { returnCandidates } from "../../functions/server/returnCandidates";
 import { returnResult } from "../../functions/server/returnResult";
 import { returnVoteResponse } from "../../functions/server/returnVoteResponse";
 import { returnInsertResponse } from "../../functions/server/returnInsertResponse";
+import { returnRemoveResponse } from "../../functions/server/returnRemoveResponse";
 
 const server = net.createServer((socket) => {
   console.log("Novo cliente conectado.");
@@ -27,6 +28,10 @@ const server = net.createServer((socket) => {
       }
       case RequestType.INSERT: {
         returnInsertResponse(request);
+        break;
+      }
+      case RequestType.REMOVE: {
+        returnRemoveResponse(request);
         break;
       }
       default: {
