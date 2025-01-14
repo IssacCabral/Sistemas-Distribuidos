@@ -1,5 +1,5 @@
 - Adicionar temporizador - OK
 - admin do sistema
-  - introduzir candidatos
-  - remover candidatos
+  - introduzir candidatos - OK
+  - remover candidatos - OK
   - enviar notas informativas (Final)

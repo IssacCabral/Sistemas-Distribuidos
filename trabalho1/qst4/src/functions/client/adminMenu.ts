@@ -5,6 +5,7 @@ import { fetchCandidates } from "./fetchCandidates";
 import { listenForData } from "./listenForData";
 import { insertCandidate } from "./insertCandidate";
 import { removeCandidate } from "./removeCandidate";
+import { sendMulticastMessage } from "../../servers/UDP/udpServer";
 
 export async function adminMenu(client: net.Socket) {
   promptClearScreen(false);
@@ -38,7 +39,8 @@ export async function adminMenu(client: net.Socket) {
         await promptClearScreen();
         break;
       case "4":
-        console.log("Enviar nota informativa...");
+        const message = await question("Digite a nota informativa: ");
+        sendMulticastMessage(message);
         await promptClearScreen();
         break;
       case "5":

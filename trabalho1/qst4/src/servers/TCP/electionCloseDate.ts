@@ -1,1 +1,1 @@
-export const electionCloseDate = new Date("2025-01-13T16:47:00");
+export const electionCloseDate = new Date("2025-01-14T13:53:00");

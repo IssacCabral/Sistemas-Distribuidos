@@ -3,6 +3,7 @@ import { askLogin } from "../functions/client/askLogin";
 import { authenticatedMenu } from "../functions/client/authenticatedMenu";
 import { connectClient } from "../functions/client/connectClient";
 import { adminMenu } from "../functions/client/adminMenu";
+import { startListeningToMulticast } from "../functions/client/startListeningToMulticast";
 
 async function main() {
   try {
@@ -34,10 +35,13 @@ async function main() {
       }
     }
 
-    if (isAdmin) {
-      await adminMenu(client);
-    } else {
-      await authenticatedMenu(client);
+    if (isAuthenticated) {
+      startListeningToMulticast();
+      if (isAdmin) {
+        await adminMenu(client);
+      } else {
+        await authenticatedMenu(client);
+      }
     }
   } catch (err) {
     console.error("Erro de conexão:", err);

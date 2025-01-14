@@ -15,6 +15,7 @@ export async function askLogin(): Promise<boolean> {
         break;
       case clientPassword:
         validChoice = true;
+        break;
       default:
         console.log("Senha incorreta! Tente novamente.");
     }
