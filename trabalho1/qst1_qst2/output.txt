@@ -1,0 +1,17 @@
+Quantidade de imóveis: 3
+
+Quantidade de bytes: 43
+Título do imóvel: Casa 1
+Tipo de Imóvel: Casa
+Preço do imóvel: R$ 12,00
+
+Quantidade de bytes: 42
+Título do imóvel: Casa 2
+Tipo de Imóvel: Casa
+Preço do imóvel: R$ 1,00
+
+Quantidade de bytes: 43
+Título do imóvel: Casa 3
+Tipo de Imóvel: Casa
+Preço do imóvel: R$ 12,00
+

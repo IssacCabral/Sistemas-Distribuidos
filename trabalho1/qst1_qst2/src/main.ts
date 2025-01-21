@@ -10,12 +10,13 @@ const data: Property[] = [];
   await inputStream.readSystem();
   await inputStream.readSystem();
 
-  // inputStream.readTCP();
+  // inputStream.readFile();
+  inputStream.readTCP();
 
   const outputStream = new PropertyOutputStream(data, process.stdout);
-  outputStream.writeSystem();
+  // outputStream.writeSystem();
   // outputStream.writeFile();
-  // outputStream.writeTCP();
+  outputStream.writeTCP();
 
   // inputStream.readFile();
 })();
