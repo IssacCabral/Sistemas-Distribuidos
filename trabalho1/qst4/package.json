@@ -5,9 +5,7 @@
   "license": "MIT",
   "scripts": {
     "tcp:server": "npx tsx src/servers/TCP/tcpServer.ts",
-    "client": "npx tsx src/clients/tcpClient.ts",
-    "udp:server": "npx tsx src/servers/UDP/udpServer.ts",
-    "udp:client": "npx tsx src/servers/UDP/udpClient.ts"
+    "client": "npx tsx src/clients/tcpClient.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
