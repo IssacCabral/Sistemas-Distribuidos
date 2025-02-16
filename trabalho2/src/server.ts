@@ -2,6 +2,7 @@
 import express from "express";
 import { RemoteMethodInvoker } from "./remote-invoker";
 import { Property } from "./entities/property";
+import { addProperty, listProperties } from "./methods/methods";
 
 const app = express();
 app.use(express.json());
@@ -11,13 +12,8 @@ const rmi = RemoteMethodInvoker.getInstance();
 const properties: Property[] = [];
 
 rmi.registerObject("propertyMethods", {
-  addProperty: (title: string, type: string, price: number) => {
-    console.log("EXECUTOU????");
-    const property = new Property(title, type, price);
-    properties.push(property);
-    return property;
-  },
-  listProperties: () => properties,
+  addProperty,
+  listProperties,
 });
 
 app.post("/invoke", async (req, res) => {

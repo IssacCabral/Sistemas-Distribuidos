@@ -1,21 +1,12 @@
-import { Property, PropertyType } from "../entities/property";
-import { IObjects } from "../interfaces/objects";
+import { properties } from "../database/properties";
+import { Property } from "../entities/property";
 
-export const properties: Property[] = [];
-
-function addProperty(title: string, type: PropertyType, price: number) {
+export function addProperty(title: string, type: string, price: number) {
   const property: Property = { title, type, price };
   properties.push(property);
   return property;
 }
 
-function listProperties() {
+export function listProperties() {
   return properties;
 }
-
-export const objects: IObjects = {
-  propertyMethods: {
-    addProperty,
-    listProperties,
-  },
-};

@@ -36,8 +36,6 @@ export class RemoteMethodInvoker {
     ) {
       const result = this.objects[objectReference][methodId](...args);
 
-      console.log({ aqui: this.objects[objectReference][methodId] });
-
       const response: ResponseMessage = {
         messageType: 1,
         requestId: request.requestId,
