@@ -1,37 +1,29 @@
+// src/server.ts
 import express from "express";
-import { Request, Response } from "express";
-import { RequestMessage } from "./interfaces/requestMessage";
-import { objects } from "./methods/methods";
-import { MethodNames, ObjectNames } from "./interfaces/objects";
-import bodyParser from "body-parser";
+import { RemoteMethodInvoker } from "./remote-invoker";
+import { Property } from "./entities/property";
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 
-app.post("/rpc", (req: Request, res: Response) => {
-  const request: RequestMessage = req.body;
-  console.log("Requisição recebida:", request);
+const rmi = RemoteMethodInvoker.getInstance();
 
-  const objectReference: ObjectNames = request.objectReference;
-  const method: MethodNames = request.methodId;
+const properties: Property[] = [];
 
-  if (request.messageType !== 0 || !objects[objectReference]?.[method]) {
-    res.status(400).json({ error: "Método inválido" });
-  }
-
-  const result = objects[objectReference][method](...request.arguments);
-
-  const response: ResponseMessage = {
-    messageType: 1,
-    requestId: request.requestId,
-    result,
-  };
-
-  res.json(response);
+rmi.registerObject("propertyMethods", {
+  addProperty: (title: string, type: string, price: number) => {
+    console.log("EXECUTOU????");
+    const property = new Property(title, type, price);
+    properties.push(property);
+    return property;
+  },
+  listProperties: () => properties,
 });
 
-// Iniciar servidor
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor RPC rodando na porta ${PORT}`);
+app.post("/invoke", async (req, res) => {
+  await rmi.doOperation(req, res);
+});
+
+app.listen(3000, () => {
+  console.log("Servidor REST-RMI rodando na porta 3000");
 });

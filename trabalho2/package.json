@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "npx tsx src/server.ts"
+    "run:server": "npx tsx src/server.ts",
+    "run:client": "npx tsx src/client.ts"
   },
   "dependencies": {
     "@types/node": "^22.13.4",
