@@ -1,5 +1,5 @@
 // src/rmi-invoker.ts
-import express from "express";
+import express, { Response } from "express";
 import { RequestMessage } from "./interfaces/requestMessage";
 import { ResponseMessage } from "./interfaces/responseMessage";
 
@@ -35,17 +35,20 @@ export class RemoteMethodInvoker {
       typeof this.objects[objectReference][methodId] === "function"
     ) {
       const result = this.objects[objectReference][methodId](...args);
-
-      const response: ResponseMessage = {
-        messageType: 1,
-        requestId: request.requestId,
-        result,
-      };
-
-      console.log("Enviando resposta RMI:", response);
-      return res.json(response);
+      return await this.sendReply(request, result, res);
     }
 
     return res.status(404).json({ error: "Método não encontrado" });
+  }
+
+  private async sendReply(request: RequestMessage, result: any, res: Response) {
+    const response: ResponseMessage = {
+      messageType: 1,
+      requestId: request.requestId,
+      result,
+    };
+
+    console.log("Enviando resposta RMI:", response);
+    return res.json(response);
   }
 }
