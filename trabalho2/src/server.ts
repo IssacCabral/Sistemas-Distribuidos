@@ -8,7 +8,6 @@ import bodyParser from "body-parser";
 const app = express();
 app.use(bodyParser.json());
 
-// Endpoint para processar requisições
 app.post("/rpc", (req: Request, res: Response) => {
   const request: RequestMessage = req.body;
   console.log("Requisição recebida:", request);

@@ -1,6 +1,5 @@
 import { MethodNames, ObjectNames } from "./objects";
 
-// Definição do protocolo
 export interface RequestMessage {
   messageType: number;
   requestId: number;

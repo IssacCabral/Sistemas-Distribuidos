@@ -1,4 +1,3 @@
-// Definição do protocolo
 interface RequestMessage {
   messageType: number;
   requestId: number;
