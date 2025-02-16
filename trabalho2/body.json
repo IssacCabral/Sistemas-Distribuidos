@@ -1,7 +1,15 @@
 {
   "messageType": 0,
   "requestId": 123,
-  "objectReference": "propertyMethods",
+  "objectReference": "property",
   "methodId": "listProperties",
   "arguments": ["Titulo 1", "Casa", 145000]
+}
+
+{
+  "messageType": 0,
+  "requestId": 123,
+  "objectReference": "landlord",
+  "methodId": "addLandlord",
+  "arguments": ["José Nunes", "jose@mail.com", "Rua x", "Cidade x"]
 }

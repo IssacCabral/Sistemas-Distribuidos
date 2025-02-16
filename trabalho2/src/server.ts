@@ -1,19 +1,26 @@
 // src/server.ts
 import express from "express";
 import { RemoteMethodInvoker } from "./remote-invoker";
-import { Property } from "./entities/property";
-import { addProperty, listProperties } from "./methods/methods";
+import {
+  addLandlord,
+  addProperty,
+  listLandlords,
+  listProperties,
+} from "./methods/methods";
 
 const app = express();
 app.use(express.json());
 
 const rmi = RemoteMethodInvoker.getInstance();
 
-const properties: Property[] = [];
-
-rmi.registerObject("propertyMethods", {
+rmi.registerObject("property", {
   addProperty,
   listProperties,
+});
+
+rmi.registerObject("landlord", {
+  addLandlord,
+  listLandlords,
 });
 
 app.post("/invoke", async (req, res) => {
