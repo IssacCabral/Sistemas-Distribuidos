@@ -1,5 +1,3 @@
-import { MethodNames, ObjectNames } from "./objects";
-
 export interface RequestMessage {
   messageType: number;
   requestId: number;
