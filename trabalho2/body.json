@@ -1,0 +1,7 @@
+{
+  "messageType": 0,
+  "requestId": 123,
+  "objectReference": "propertyMethods",
+  "methodId": "listProperties",
+  "arguments": ["Titulo 1", "Casa", 145000]
+}
