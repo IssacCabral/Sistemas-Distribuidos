@@ -1,14 +1,16 @@
 import express from "express";
 import { Request, Response } from "express";
-import { Message } from "./interfaces/message";
+import { RequestMessage } from "./interfaces/requestMessage";
 import { objects } from "./methods/methods";
 import { MethodNames, ObjectNames } from "./interfaces/objects";
+import bodyParser from "body-parser";
 
 const app = express();
+app.use(bodyParser.json());
 
 // Endpoint para processar requisições
 app.post("/rpc", (req: Request, res: Response) => {
-  const request: Message = req.body;
+  const request: RequestMessage = req.body;
   console.log("Requisição recebida:", request);
 
   const objectReference: ObjectNames = request.objectReference;
