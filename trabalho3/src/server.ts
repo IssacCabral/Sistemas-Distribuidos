@@ -34,5 +34,5 @@ app.get("/landlords", (_req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Servidor REST-RMI rodando na porta 3000");
+  console.log("Servidor REST rodando na porta 3000");
 });
